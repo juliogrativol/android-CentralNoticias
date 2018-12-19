@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
     private List<Noticia> noticias = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
 
+    public static final int ACTIVITY_CONSTANT = 55;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
     @Override
     public void onCustomClick(Object object) {
         Intent intent = new Intent(this, DetalheNoticiaActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, ACTIVITY_CONSTANT);
     }
 
     @Override
