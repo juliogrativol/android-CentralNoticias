@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
 
     @Override
     public void onCustomClick(Object object) {
-        Intent intent = new Intent(this, AboutActivity.class);
+        Intent intent = new Intent(this, DetalheNoticiaActivity.class);
         startActivity(intent);
     }
 
@@ -124,6 +124,10 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(v.getContext(), NovaNoticiaActivity.class);
+                startActivity(intent);
+
+                /*
                 UUID uuid = UUID.randomUUID();
                 String myRandom = uuid.toString();
 
@@ -134,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
 
                 noticias.add(noticia);
                 adapter.notifyDataSetChanged();
+                */
             }
         });
     }
