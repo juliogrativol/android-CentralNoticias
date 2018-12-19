@@ -26,7 +26,7 @@
                 android:paddingLeft="12dp">
 
                 <LinearLayout
-                    android:layout_width="245dp"
+                    android:layout_width="325dp"
                     android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:gravity="left|center_vertical"
@@ -48,15 +48,18 @@
                     android:layout_weight="6"
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="12dp">
+                    android:paddingHorizontal="16dp"
+                    android:paddingLeft="12dp"
+                    android:textAlignment="center">
 
-                    <TextView
-                        android:id="@+id/textview_autor"
+
+                    <Button
+                        android:id="@+id/btn_delete_noticia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Autor"
-                        android:textSize="14dp" />
-
+                        android:layout_weight="1"
+                        android:background="@android:drawable/ic_delete"
+                        android:text="" />
                 </LinearLayout>
 
             </LinearLayout>

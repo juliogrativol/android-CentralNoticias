@@ -7,4 +7,6 @@ package com.njinformatica.centralnoticias.contract;
 public interface ClickRecyclerView_Interface {
 
     void onCustomClick(Object object);
+
+    void onDeleteNoticiaClick(Object object);
 }

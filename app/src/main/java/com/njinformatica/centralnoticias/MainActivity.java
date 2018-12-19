@@ -108,6 +108,12 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         Toast.makeText(this, ((Noticia) object).getAutor(), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onDeleteNoticiaClick(Object object) {
+        Noticia noticia = (Noticia) object;
+        Toast.makeText(this, "delete acionado para a noticia " +noticia.getTitulo(), Toast.LENGTH_SHORT).show();
+    }
+
     public void setaButtons(){
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_fabteste);
     }
@@ -121,13 +127,10 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
             @Override
             public void onClick(View v) {
 
-                // Cria uma nova pessoa chamada Renan Teles
                 Noticia noticia = new Noticia();
                 noticia.setTitulo("título da notícia");
                 noticia.setAutor("jthomaz");
 
-                //Adiciona a pessoa1 e avisa o adapter que o conteúdo
-                //da lista foi alterado
                 noticias.add(noticia);
                 adapter.notifyDataSetChanged();
             }

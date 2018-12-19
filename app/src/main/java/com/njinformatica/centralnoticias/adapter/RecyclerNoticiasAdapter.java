@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,6 @@ public class RecyclerNoticiasAdapter extends RecyclerView.Adapter<RecyclerNotici
         Noticia noticia = noticias.get(i);
 
         viewHolder.viewTitulo.setText(noticia.getTitulo());
-        viewHolder.viewAutor.setText(noticia.getAutor());
     }
 
     @Override
@@ -53,19 +53,26 @@ public class RecyclerNoticiasAdapter extends RecyclerView.Adapter<RecyclerNotici
     protected class RecyclerNoticiasViewHolder extends RecyclerView.ViewHolder {
 
         protected TextView viewTitulo;
-        protected TextView viewAutor;
+        protected  Button deleteButton;
 
         public RecyclerNoticiasViewHolder(final View itemView) {
             super(itemView);
 
             viewTitulo = (TextView) itemView.findViewById(R.id.textview_titulo);
-            viewAutor = (TextView) itemView.findViewById(R.id.textview_autor);
+            deleteButton = (Button) itemView.findViewById(R.id.btn_delete_noticia);
 
             //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     clickRecyclerViewInterface.onCustomClick(noticias.get(getLayoutPosition()));
+                }
+            });
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickRecyclerViewInterface.onDeleteNoticiaClick(noticias.get(getLayoutPosition()));
                 }
             });
         }
