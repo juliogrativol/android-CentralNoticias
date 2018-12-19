@@ -1,5 +1,6 @@
 package com.njinformatica.centralnoticias;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -90,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
 
     @Override
     public void onCustomClick(Object object) {
-        Toast.makeText(this, ((Noticia) object).getAutor(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
 
                 UUID uuid = UUID.randomUUID();
                 String myRandom = uuid.toString();
-                
+
                 Noticia noticia = new Noticia();
                 noticia.setId(myRandom.substring(0,4));
                 noticia.setTitulo("título da notícia");
