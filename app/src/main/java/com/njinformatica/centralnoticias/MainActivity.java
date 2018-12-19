@@ -16,7 +16,9 @@ import com.njinformatica.centralnoticias.contract.ClickRecyclerView_Interface;
 import com.njinformatica.centralnoticias.modelo.Noticia;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements ClickRecyclerView_Interface {
 
@@ -34,17 +36,6 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
-
         setaRecyclerView();
         setaButtons();
         listenersButtons();
@@ -52,36 +43,34 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         Noticia noticia;
 
         noticia = new Noticia();
-        noticia.setTitulo("titulo 1");
+        noticia.setId("xcv1");
+        noticia.setTitulo("Novos carros lançados");
         noticia.setAutor("jthomaz");
         noticias.add(noticia);
 
         noticia = new Noticia();
-        noticia.setTitulo("titulo 2");
+        noticia.setId("xc55");
+        noticia.setTitulo("Bolsa subiu");
         noticia.setAutor("jthomaz");
         noticias.add(noticia);
 
         noticia = new Noticia();
-        noticia.setTitulo("titulo 3s");
+        noticia.setId("xc87");
+        noticia.setTitulo("Empresas de TI avançam no mercado");
         noticia.setAutor("jthomaz");
         noticias.add(noticia);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -91,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
 
     public void setaRecyclerView(){
 
-        //Aqui é instanciado o Recyclerview
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_recyclerteste);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -100,9 +88,6 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         mRecyclerView.setAdapter(adapter);
     }
 
-    /**
-     * Aqui é o método onde trata o clique em um item da lista
-     */
     @Override
     public void onCustomClick(Object object) {
         Toast.makeText(this, ((Noticia) object).getAutor(), Toast.LENGTH_SHORT).show();
@@ -110,24 +95,37 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
 
     @Override
     public void onDeleteNoticiaClick(Object object) {
-        Noticia noticia = (Noticia) object;
-        Toast.makeText(this, "delete acionado para a noticia " +noticia.getTitulo(), Toast.LENGTH_SHORT).show();
+        Noticia noticia;
+        Iterator itr = noticias.iterator();
+        while (itr.hasNext())
+        {
+            noticia = (Noticia)itr.next();
+            if (noticia.getId().equalsIgnoreCase(((Noticia) object).getId())) {
+                itr.remove();
+                break;
+            }
+        }
+
+        adapter.notifyDataSetChanged();
+
+        Toast.makeText(this, "Notícia removida com sucesso!", Toast.LENGTH_SHORT).show();
     }
 
     public void setaButtons(){
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_fabteste);
     }
 
-    /**
-     * Chama os listeners para os botões
-     */
     public void listenersButtons() {
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                UUID uuid = UUID.randomUUID();
+                String myRandom = uuid.toString();
+                
                 Noticia noticia = new Noticia();
+                noticia.setId(myRandom.substring(0,4));
                 noticia.setTitulo("título da notícia");
                 noticia.setAutor("jthomaz");
 

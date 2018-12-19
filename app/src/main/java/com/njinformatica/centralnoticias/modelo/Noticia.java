@@ -6,6 +6,7 @@ package com.njinformatica.centralnoticias.modelo;
 
 public class Noticia {
 
+    private String id;
     private String autor;
     private String data;
     private String informativo;
@@ -16,13 +17,18 @@ public class Noticia {
 
     }
 
-    public Noticia(String autor, String data, String informativo, String noticia, String titulo) {
+    public Noticia(String id, String autor, String data, String informativo, String noticia, String titulo) {
+        this.id = id;
         this.autor = autor;
         this.data = data;
         this.informativo = informativo;
         this.noticia = noticia;
         this.titulo = titulo;
     }
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public String getData() {
         return data;
@@ -40,10 +46,7 @@ public class Noticia {
         this.informativo = informativo;
     }
 
-    public String getNoticia() {
-        return noticia;
-
-    }
+    public String getNoticia() { return noticia; }
 
     public void setNoticia(String noticia) {
         this.noticia = noticia;
