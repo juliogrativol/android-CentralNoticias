@@ -7,4 +7,6 @@
     <string name="title_activity_about">Sobre a Central de notícias</string>
     <string name="title_activity_detalhe_noticia">Detalhe da Notícia</string>
     <string name="title_activity_nova_noticia">Nova Notícia</string>
+    <string name="autor_fragment">Autor Fragment</string>
+    <string name="app_fragment">App Fragment</string>
 </resources>
