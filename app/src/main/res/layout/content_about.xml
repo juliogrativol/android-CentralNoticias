@@ -22,13 +22,13 @@
                 android:id="@+id/btn_sobre_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="App"/>
+                android:text="@string/app"/>
 
             <Button
                 android:id="@+id/btn_sobre_autor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Autor"/>
+                android:text="@string/autor"/>
         </LinearLayout>
 
         <LinearLayout

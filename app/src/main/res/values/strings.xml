@@ -9,4 +9,10 @@
     <string name="title_activity_nova_noticia">Nova Notícia</string>
     <string name="autor_fragment">Autor Fragment</string>
     <string name="app_fragment">App Fragment</string>
+    <string name="app">App</string>
+    <string name="autor">Autor</string>
+    <string name="t_tulo">Título:</string>
+    <string name="informativo">Informativo:</string>
+    <string name="not_cia">Notícia:</string>
+    <string name="data">Data:</string>
 </resources>
