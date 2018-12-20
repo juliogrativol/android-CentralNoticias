@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.njinformatica.centralnoticias.AboutAutorFragment">
+    tools:context="com.njinformatica.centralnoticias.AboutAutorFragment"
+    android:padding="40dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/autor_fragment" />
+        android:text="@string/julio_cesar_grativol_estudando_mit_mobile_infnet"
+        android:layout_margin="16dp"/>
 
 </FrameLayout>

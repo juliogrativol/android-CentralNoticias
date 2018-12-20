@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.njinformatica.centralnoticias.AboutAppFragment">
+    tools:context="com.njinformatica.centralnoticias.AboutAppFragment"
+    android:padding="40dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/app_fragment" />
+        android:text="@string/app_central_de_not_cias_utilize_esse_app_para_ler_as_suas_not_cias_preferidas"
+        android:layout_margin="16dp"/>
 
 </FrameLayout>
