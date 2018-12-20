@@ -15,11 +15,12 @@ import android.widget.Toast;
 import com.njinformatica.centralnoticias.adapter.RecyclerNoticiasAdapter;
 import com.njinformatica.centralnoticias.contract.ClickRecyclerView_Interface;
 import com.njinformatica.centralnoticias.modelo.Noticia;
+import com.njinformatica.centralnoticias.service.NoticiaService;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements ClickRecyclerView_Interface {
 
@@ -62,6 +63,16 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         noticia.setTitulo("Empresas de TI avançam no mercado");
         noticia.setAutor("jthomaz");
         noticias.add(noticia);
+
+        NoticiaService noticiaService = new NoticiaService();
+        try {
+            String buffer = noticiaService.execute().get();
+            Toast.makeText(this, buffer, Toast.LENGTH_LONG).show();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
