@@ -1,10 +1,12 @@
 package com.njinformatica.centralnoticias.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by jthomaz on 18/12/2018.
  */
 
-public class Noticia {
+public class Noticia implements Serializable{
 
     private String id;
     private String autor;

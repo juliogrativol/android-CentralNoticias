@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
     @Override
     public void onCustomClick(Object object) {
         Intent intent = new Intent(this, DetalheNoticiaActivity.class);
+        intent.putExtra("noticia" ,((Noticia) object));
         startActivityForResult(intent, ACTIVITY_CONSTANT);
     }
 
