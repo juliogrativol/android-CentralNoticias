@@ -2,6 +2,10 @@ package com.njinformatica.centralnoticias.service;
 
 import android.os.AsyncTask;
 
+import com.google.gson.Gson;
+import com.njinformatica.centralnoticias.dto.ListaNoticiasDTO;
+import com.njinformatica.centralnoticias.modelo.Noticia;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,14 +17,15 @@ import java.net.URL;
  * Created by macbook on 19/12/2018.
  */
 
-public class NoticiaService extends AsyncTask<Void, Void, String> {
+public class NoticiaService extends AsyncTask<Void, Void, ListaNoticiasDTO> {
 
 
     @Override
-    protected String doInBackground(Void... voids) {
+    protected ListaNoticiasDTO doInBackground(Void... voids) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         StringBuffer buffer = null;
+        ListaNoticiasDTO noticias = null;
 
         try {
             URL url = new URL("https://3zg1cigkpk.execute-api.us-east-1.amazonaws.com/v1/noticias");
@@ -39,6 +44,9 @@ public class NoticiaService extends AsyncTask<Void, Void, String> {
                 buffer.append("\n");
             }
 
+            Gson g = new Gson();
+            noticias = g.fromJson(buffer.toString(), ListaNoticiasDTO.class);
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,11 +63,11 @@ public class NoticiaService extends AsyncTask<Void, Void, String> {
             }
         }
 
-        return buffer.toString();
+        return noticias;
     }
 
     @Override
-    protected void onPostExecute(String dados) {
+    protected void onPostExecute(ListaNoticiasDTO listaNoticiasDTO) {
         // Faça alguma coisa com os dados
     }
 }

@@ -12,8 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.njinformatica.centralnoticias.adapter.RecyclerNoticiasAdapter;
 import com.njinformatica.centralnoticias.contract.ClickRecyclerView_Interface;
+import com.njinformatica.centralnoticias.dto.ListaNoticiasDTO;
 import com.njinformatica.centralnoticias.modelo.Noticia;
 import com.njinformatica.centralnoticias.service.NoticiaService;
 
@@ -44,30 +46,15 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
         setaButtons();
         listenersButtons();
 
-        Noticia noticia;
-
-        noticia = new Noticia();
-        noticia.setId("xcv1");
-        noticia.setTitulo("Novos carros lançados");
-        noticia.setAutor("jthomaz");
-        noticias.add(noticia);
-
-        noticia = new Noticia();
-        noticia.setId("xc55");
-        noticia.setTitulo("Bolsa subiu");
-        noticia.setAutor("jthomaz");
-        noticias.add(noticia);
-
-        noticia = new Noticia();
-        noticia.setId("xc87");
-        noticia.setTitulo("Empresas de TI avançam no mercado");
-        noticia.setAutor("jthomaz");
-        noticias.add(noticia);
-
         NoticiaService noticiaService = new NoticiaService();
         try {
-            String buffer = noticiaService.execute().get();
-            Toast.makeText(this, buffer, Toast.LENGTH_LONG).show();
+
+            ListaNoticiasDTO listaNoticiasDTO = noticiaService.execute().get();
+
+            for (int i = 0; i < listaNoticiasDTO.getNoticias().length; i++) {
+                noticias.add(listaNoticiasDTO.getNoticias()[i]);
+            }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -140,18 +127,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
                 Intent intent = new Intent(v.getContext(), NovaNoticiaActivity.class);
                 startActivity(intent);
 
-                /*
-                UUID uuid = UUID.randomUUID();
-                String myRandom = uuid.toString();
-
-                Noticia noticia = new Noticia();
-                noticia.setId(myRandom.substring(0,4));
-                noticia.setTitulo("título da notícia");
-                noticia.setAutor("jthomaz");
-
-                noticias.add(noticia);
                 adapter.notifyDataSetChanged();
-                */
             }
         });
     }
