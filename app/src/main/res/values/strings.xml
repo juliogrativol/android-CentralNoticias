@@ -10,11 +10,12 @@
     <string name="autor_fragment">Autor Fragment</string>
     <string name="app_fragment">App Fragment</string>
     <string name="app">App</string>
-    <string name="autor">Autor</string>
     <string name="t_tulo">Título:</string>
     <string name="informativo">Informativo:</string>
     <string name="not_cia">Notícia:</string>
     <string name="data">Data:</string>
     <string name="app_central_de_not_cias_utilize_esse_app_para_ler_as_suas_not_cias_preferidas">App Central de Notícias. Utilize esse App para ler as suas notícias preferidas.</string>
     <string name="julio_cesar_grativol_estudando_mit_mobile_infnet">Julio Cesar Grativol. Estudando MIT Mobile Infnet</string>
+    <string name="autor">Autor</string>
+    <string name="informativ">Informativo</string>
 </resources>

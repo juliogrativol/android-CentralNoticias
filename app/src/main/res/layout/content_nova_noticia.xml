@@ -10,7 +10,7 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/text_titulo"
         android:layout_width="326dp"
         android:layout_height="54dp"
         android:layout_marginEnd="8dp"
@@ -23,35 +23,35 @@
         tools:layout_editor_absoluteY="25dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/text_informativo"
         android:layout_width="326dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Informativo"
+        android:hint="@string/informativo"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/text_titulo"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/text_titulo"
+        app:layout_constraintTop_toBottomOf="@+id/text_titulo" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/text_autor"
         android:layout_width="319dp"
         android:layout_height="51dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Autor"
+        android:hint="@string/autor"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/text_informativo"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/text_informativo"
+        app:layout_constraintTop_toBottomOf="@+id/text_informativo" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/edit_text_noticia"
         android:layout_width="321dp"
         android:layout_height="128dp"
         android:layout_marginEnd="8dp"
@@ -60,19 +60,19 @@
         android:ems="10"
         android:hint="Notícia"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintEnd_toEndOf="@+id/text_autor"
+        app:layout_constraintStart_toStartOf="@+id/text_autor"
+        app:layout_constraintTop_toBottomOf="@+id/text_autor" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_nova_noticia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Ok"
-        app:layout_constraintEnd_toEndOf="@+id/editText5"
-        app:layout_constraintStart_toStartOf="@+id/editText5"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_noticia"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_noticia"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_noticia" />
 </android.support.constraint.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
     private List<Noticia> noticias = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
 
-    public static final int ACTIVITY_CONSTANT = 55;
+    public static final int NOVA_NOTICIA_PROCESS = 55;
 
 
     @Override
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
     public void onCustomClick(Object object) {
         Intent intent = new Intent(this, DetalheNoticiaActivity.class);
         intent.putExtra("noticia" ,((Noticia) object));
-        startActivityForResult(intent, ACTIVITY_CONSTANT);
+        startActivityForResult(intent, NOVA_NOTICIA_PROCESS);
     }
 
     @Override
@@ -126,10 +127,20 @@ public class MainActivity extends AppCompatActivity implements ClickRecyclerView
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), NovaNoticiaActivity.class);
-                startActivity(intent);
-
-                adapter.notifyDataSetChanged();
+                startActivityForResult(intent, NOVA_NOTICIA_PROCESS);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("MainActivity", "chamou a volta");
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == NOVA_NOTICIA_PROCESS && resultCode == RESULT_OK && data != null) {
+            Noticia noticia = (Noticia) data.getExtras().getSerializable("NOVA_NOTICIA");
+            noticias.add(noticia);
+            adapter.notifyDataSetChanged();
+        }
     }
 }
